@@ -12,7 +12,7 @@ import UIKit
 class DetailViewController: UIViewController, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var closeButton: UIButton!
-    
+
     
     func scrollViewDidScroll(scrollView: UIScrollView){
         /* Gets called when user scrolls or drags */
@@ -62,10 +62,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
 
     func closeButtonHandler(sender: UIButton!) {
-
             println("hllo")
             self.dismissViewControllerAnimated(true, nil);
-    
     }
     
     

@@ -9,37 +9,27 @@
 import UIKit
 
 class AppController: UIViewController {
-
     
     // UI
     var scrollButton: UIButton!
     var gridButton: UIButton!
 
-    
-    // Connection / Data
-    var data = NSMutableData()
-    
-    
-    func alertWithTitle(title: String, message: String) {
-        var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
         // before we launch see if there is a working internet connection
         if(settingsModel.networkConnection){
-
+            
+            // fetch data
+            startConnection()
+            
             // check if there are beacons in the are (are we at an exhibit?)
             
-            
             // no beacons
-        
+            
             // create UI
             createUI()
             
@@ -51,7 +41,18 @@ class AppController: UIViewController {
         
         }
     }
-
+    
+    
+    // get the data from the corresponding model (JSON feed)
+    func startConnection(){
+        dataModel.fetchTitles {
+            dispatch_async(dispatch_get_main_queue()) {
+                println("fetching data complete")
+                println(dataModel.titles)
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,7 +74,7 @@ class AppController: UIViewController {
         scrollButton.addTarget(self, action: "scrollButtonHandler:", forControlEvents: .TouchUpInside)
         view.addSubview(scrollButton)
         
-        
+
         // add gridview button
         gridButton = UIButton.buttonWithType(.System) as? UIButton
         gridButton.frame = CGRect(x: 0, y: 80, width: view.bounds.width, height: 44)

@@ -35,13 +35,10 @@
 import UIKit
 
 class HomeGridCell: UICollectionViewCell {
+    
+    @IBOutlet weak var textLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        println("ja")
-    
     }
-    
-    
-    
-    
 }

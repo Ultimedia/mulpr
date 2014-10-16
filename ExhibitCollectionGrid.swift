@@ -26,7 +26,6 @@ import UIKit
 class ExhibitCollectionGrid: UICollectionViewController {
         let cellId = "Cell"
 
-
         override init(collectionViewLayout layout: UICollectionViewLayout!) {
             super.init(collectionViewLayout: layout)
             
@@ -37,48 +36,60 @@ class ExhibitCollectionGrid: UICollectionViewController {
             collectionView!.pagingEnabled = true
             collectionView!.showsHorizontalScrollIndicator = false
             collectionView!.showsVerticalScrollIndicator = false
-        }
-
-        convenience required init(coder aDecoder: NSCoder) {
-            let flowLayout = UICollectionViewFlowLayout()
-            
-            flowLayout.minimumLineSpacing = 1
-            flowLayout.minimumInteritemSpacing = 0.5
-            flowLayout.scrollDirection = .Vertical
-
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
-            
-            self.init(collectionViewLayout: flowLayout)
-            flowLayout.itemSize = CGSize(width: (self.view.bounds.width/2)-1, height: 140);
+        
 
         }
 
     
-        // collectionView touch
-        override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-            println("hittin button")
+        convenience required init(coder aDecoder: NSCoder) {
+            let flowLayout = UICollectionViewFlowLayout()
             
-            // so go to the detail page
+            flowLayout.minimumLineSpacing = 1
+            flowLayout.minimumInteritemSpacing = 1
+            flowLayout.scrollDirection = .Vertical
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left:0, bottom: 0, right: 0)
+            
+            self.init(collectionViewLayout: flowLayout)
+            flowLayout.itemSize = CGSize(width: (self.view.bounds.width/2) - 0.5, height: 140);
         }
 
-        override func collectionView(collectionView: UICollectionView,
-            numberOfItemsInSection section: Int) -> Int {
-                /* Each section has between 10 to 15 cells */
-                return Int(100)
-        }
-        
+    
         override func collectionView(collectionView: UICollectionView,
             cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
                 
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as HomeGridCell
                 cell.backgroundColor = UIColor.blackColor()
-
+                cell.textLabel.text = dataModel.titleForItemAtIndexPath(indexPath)
+                
+                println()
+                println(dataModel.titleForItemAtIndexPath(indexPath))
+                
             return cell
         }
+
+    
+        override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+           
+            return dataModel.numberOfSections()
+        }
+    
+    
+        override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            
+            return  dataModel.numberOfItemsInSection(section)
+        }
+    
     
         // hide status bar
         override func prefersStatusBarHidden() -> Bool {
             return true
         }
     
+    
+        // collectionView touch
+        override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+            println("hittin button")
+        
+            // so go to the detail page
+        }
 }

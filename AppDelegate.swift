@@ -8,7 +8,8 @@
 
 import UIKit
 
-var settingsModel = SettingsModel()
+let settingsModel = SettingsModel()
+let dataModel = DataModel()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
