@@ -15,6 +15,17 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yr-ez-fVj">
+                                <rect key="frame" x="128" y="438" width="345" height="62"/>
+                                <state key="normal" image="ButtonTwitterNormal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="twitterAuthenticateButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9hI-cg-leN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="MWM-DX-383"/>
@@ -63,7 +74,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4I-Zv-Ayf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717" y="839"/>
+            <point key="canvasLocation" x="2403" y="881"/>
+        </scene>
+        <!--Exhibit Collection Grid-->
+        <scene sceneID="aRW-w1-fFn">
+            <objects>
+                <collectionViewController storyboardIdentifier="ExhibitCollection" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4oN-Zb-GXN" customClass="ExhibitCollectionGrid" customModule="Mulb" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6gn-yT-vkT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AcV-36-C6o">
+                            <size key="itemSize" width="98" height="110"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="4oN-Zb-GXN" id="49X-aJ-je7"/>
+                            <outlet property="delegate" destination="4oN-Zb-GXN" id="dxO-HT-iu5"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C4h-dR-9c6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s1r-Wa-vNz">
@@ -83,5 +118,26 @@
             </objects>
             <point key="canvasLocation" x="1717" y="129"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="F8g-kC-4fh">
+            <objects>
+                <viewController restorationIdentifier="ScrollView" storyboardIdentifier="ScrollView" id="rGh-Fa-OLB" customClass="DetailViewController" customModule="Mulb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ffh-g7-FMr"/>
+                        <viewControllerLayoutGuide type="bottom" id="5LI-Te-67Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jtb-g7-KWh" customClass="ScrollDetailView" customModule="Mulb" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j9q-4o-6LB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1717" y="881"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ButtonTwitterNormal" width="290" height="62"/>
+    </resources>
 </document>

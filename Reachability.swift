@@ -9,11 +9,13 @@
 import Foundation
 import SystemConfiguration
 
+
+/**
+* Created by Isuru Nanayakkara on 9/2/14.
+*/
+
 public class Reachability {
     
-    /**
-    :see: Original post - http://www.chrisdanielson.com/2009/07/22/iphone-network-connectivity-test-example/
-    */
     class func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
